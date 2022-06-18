@@ -19,26 +19,36 @@ function validateForm(event) {
 
         fnameErr.classList.toggle("hidden")
         fnameMsg.classList.toggle('hidden')
+        return false;
     }
     if (lName == "") {
 
         lnameErr.classList.toggle("hidden")
         lnameMsg.classList.toggle('hidden')
+        return false;
     }
     if (mail == "") {
         mailErr.classList.toggle("hidden")
         mailMsg.classList.toggle('hidden')
         document.getElementById('mail').placeholder = "example@gmail.com"
-
+        return false;
     }
     if (password == "") {
         passwordErr.classList.toggle("hidden")
         passwordMsg.classList.toggle('hidden')
+        return false;
     }
-    event.preventDefault();
-    return false;
+
+    return true;
 
 }
 
-document.getElementById("regForm").addEventListener("submit", validateForm)
+
+
+document.querySelector('form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+        alert("Success")
+    }
+})
 
